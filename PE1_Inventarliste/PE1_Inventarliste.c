@@ -96,8 +96,28 @@ unsigned item_in_stock(unsigned item_id) {
 
 // --- part 1
 
-void enter_desired_items(unsigned*, unsigned*);
-void remove_items_from_stock(unsigned id, unsigned nr);
+void enter_desired_items(unsigned int* id, unsigned int* nr) {
+	setbuf(stdout, 0);
+	printf("\nGeben Sie die ID des Artikels ein: ");
+	scanf("%i", id);
+	setbuf(stdout, 0);
+	printf("\nGeben Sie die gewuenschte Anzahl ein: ");
+	scanf("%i", nr);
+}
+
+void remove_items_from_stock(unsigned id, unsigned nr) {
+	if (nr <= stock[id].quantity) {
+		stock[id].quantity = stock[id].quantity - nr;
+		setbuf(stdout, 0);
+		printf("\nDie Buchung war erfolgreich");
+		setbuf(stdout, 0);
+		printf("\nPosition %s: rack%i/pos %i", stock[id].model, stock[id].rack, stock[id].position);
+	}
+	else {
+		setbuf(stdout, 0);
+		printf("\nZu wenig Artikel auf Lager");
+	}
+}
 
 // --- part 2
 
@@ -120,7 +140,19 @@ void print_stock()
 
 // --- part 4
 
-void save_items_to_file(char* filename);
+void save_items_to_file(char* filename) {
+	FILE* fp = fopen(filename, "w");
+	for (int i = 0; i < stock_size; i++) {
+		fprintf(fp, "%i %s %s %i %i %i\n",
+			stock[i].id,
+			stock[i].manufacturer,
+			stock[i].model,
+			stock[i].rack,
+			stock[i].position,
+			stock[i].quantity);
+	}
+	fclose(fp);
+}
 
 /*
  * main function: entry of point
@@ -156,12 +188,14 @@ int main()
 		{
 		case 1:
 			// TODO
+			remove_items_from_stock();
 			break;
 		case 2:
 			// TODO
+			enter_desired_items();
 			break;
 		case 3:
-			// save_items_to_file("lager.txt");
+			save_items_to_file("lager.txt");
 			break;
 		case 4:
 			print_stock();
