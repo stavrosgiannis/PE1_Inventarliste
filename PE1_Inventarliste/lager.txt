@@ -1,0 +1,12 @@
+11 Hersteller-A Modell-A 54 4 12
+22 Hersteller-B Modell-B 6 34 101
+53 Hersteller-C Modell-C 14 20 20
+84 Hersteller-D Modell-D 85 2 18
+101 Hersteller-E Modell-E 25 4 12
+102 Hersteller-F Modell-X1 56 3 101
+322 Hersteller-F Modell-X2 61 70 20
+411 Hersteller-G Modell-Y1 88 82 18
+561 Hersteller-G Modell-Y2 95 4 12
+772 Hersteller-G Modell-Y3 56 03 101
+883 Hersteller-H Modell-H2 41 90 20
+954 Hersteller-I Modell-I 68 92 18
